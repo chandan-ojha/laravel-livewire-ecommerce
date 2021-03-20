@@ -37,16 +37,16 @@
 
 							<div class="form-group">
 								<label class="col-md-4 control-label">Short Description</label>
-								<div class="col-md-4">
-									<textarea class="form-control" placeholder="Short Description" wire:model="short_description"></textarea>
+								<div class="col-md-4" wire:ignore>
+									<textarea class="form-control" id="short_description" placeholder="Short Description" wire:model="short_description"></textarea>
 									@error('short_description') <p class="text-danger">{{$message}}</p> @enderror
 								</div>
 							</div>
 
 							<div class="form-group">
 								<label class="col-md-4 control-label">Description</label>
-								<div class="col-md-4">
-									<textarea class="form-control" placeholder="Description" wire:model="description"></textarea>
+								<div class="col-md-4" wire:ignore>
+									<textarea class="form-control" id="description" placeholder="Description" wire:model="description"></textarea>
 									@error('description') <p class="text-danger">{{$message}}</p> @enderror
 								</div>
 							</div>
@@ -142,3 +142,31 @@
 		</div>
 	</div>
 </div>
+
+@push('scripts')
+<script>
+	$(function() {
+		tinymce.init({
+			selector: '#short_description',
+			setup: function(editor) {
+				editor.on('Change', function(e) {
+					tinyMCE.triggerSave();
+					var sd_data = $('#short_description').val();
+					@this.set('short_description', sd_data);
+				});
+			}
+		});
+
+		tinymce.init({
+			selector: '#description',
+			setup: function(editor) {
+				editor.on('Change', function(e) {
+					tinyMCE.triggerSave();
+					var d_data = $('#description').val();
+					@this.set('description', d_data);
+				});
+			}
+		});
+	});
+</script>
+@endpush
