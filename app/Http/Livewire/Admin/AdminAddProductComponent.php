@@ -25,7 +25,7 @@ class AdminAddProductComponent extends Component
 	public $quantity;
 	public $image;
 	public $category_id;
-	
+
 	public function mount()
 	{
 		$this->stock_status = 'instock';
@@ -34,11 +34,42 @@ class AdminAddProductComponent extends Component
 
 	public function generateSlug()
 	{
-		$this->slug = Str::slug($this->name,'-');
+		$this->slug = Str::slug($this->name, '-');
+	}
+
+	public function updated($fields)
+	{
+		$this->validateOnly($fields, [
+			'name' => 'required',
+			'slug' => 'required|unique:products',
+			'short_description' => 'required',
+			'description' => 'required',
+			'regular_price' => 'required|numeric',
+			'sale_price' => 'numeric',
+			'SKU' => 'required',
+			'stock_status' => 'required',
+			'quantity' => 'required|numeric',
+			'image' => 'required|mimes:jpeg,png',
+			'category_id' => 'required'
+		]);
 	}
 
 	public function addProduct()
 	{
+		$this->validate([
+			'name' => 'required',
+			'slug' => 'required|unique:products',
+			'short_description' => 'required',
+			'description' => 'required',
+			'regular_price' => 'required|numeric',
+			'sale_price' => 'numeric',
+			'SKU' => 'required',
+			'stock_status' => 'required',
+			'quantity' => 'required|numeric',
+			'image' => 'required|mimes:jpeg,png',
+			'category_id' => 'required'
+		]);
+
 		$product = new Product();
 		$product->name = $this->name;
 		$product->slug = $this->slug;
@@ -50,17 +81,17 @@ class AdminAddProductComponent extends Component
 		$product->stock_status = $this->stock_status;
 		$product->featured = $this->featured;
 		$product->quantity = $this->quantity;
-		$imageName = Carbon::now()->timestamp. '.' . $this->image->extension();
-		$this->image->storeAs('products',$imageName);
+		$imageName = Carbon::now()->timestamp . '.' . $this->image->extension();
+		$this->image->storeAs('products', $imageName);
 		$product->image = $imageName;
-		$product->category_id= $this->category_id;
+		$product->category_id = $this->category_id;
 		$product->save();
-		session()->flash('message','Product has been created successfully!');
+		session()->flash('message', 'Product has been created successfully!');
 	}
 
-    public function render()
-    {
-    	$categories = Category::all();
-        return view('livewire.admin.admin-add-product-component',['categories'=>$categories])->layout('layouts.base');
-    }
+	public function render()
+	{
+		$categories = Category::all();
+		return view('livewire.admin.admin-add-product-component', ['categories' => $categories])->layout('layouts.base');
+	}
 }

@@ -19,26 +19,47 @@ class AdminAddHomeSliderComponent extends Component
 
 	public function mount()
 	{
-      $this->status = 0;
+		$this->status = 0;
+	}
+
+	public function updated($fields)
+	{
+		$this->validateOnly($fields, [
+			'title' => 'required',
+			'subtitle' => 'required',
+			'price' => 'required|numeric',
+			'link' => 'required|url',
+			'image' => 'required',
+			'status' => 'required',
+		]);
 	}
 
 	public function addSlide()
 	{
+		$this->validate([
+			'title' => 'required',
+			'subtitle' => 'required',
+			'price' => 'required|numeric',
+			'link' => 'required|url',
+			'image' => 'required',
+			'status' => 'required',
+		]);
+
 		$slider = new HomeSlider();
-        $slider->title = $this->title;
-	    $slider->subtitle = $this->subtitle;
-	    $slider->price = $this->price ;
-	    $slider->link = $this->link;
-	    $imagename = Carbon::now()->timestamp. '.' . $this->image->extension();
-	    $this->image->storeAs('sliders',$imagename);
-	    $slider->image = $imagename;
-	    $slider->status = $this->status;
-	    $slider->save();
-	    session()->flash('message','Slide has been created successfully!');
+		$slider->title = $this->title;
+		$slider->subtitle = $this->subtitle;
+		$slider->price = $this->price;
+		$slider->link = $this->link;
+		$imagename = Carbon::now()->timestamp . '.' . $this->image->extension();
+		$this->image->storeAs('sliders', $imagename);
+		$slider->image = $imagename;
+		$slider->status = $this->status;
+		$slider->save();
+		session()->flash('message', 'Slide has been created successfully!');
 	}
 
-    public function render()
-    {
-        return view('livewire.admin.admin-add-home-slider-component')->layout('layouts.base');
-    }
+	public function render()
+	{
+		return view('livewire.admin.admin-add-home-slider-component')->layout('layouts.base');
+	}
 }
