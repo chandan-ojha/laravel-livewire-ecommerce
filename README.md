@@ -13,5 +13,13 @@
 -   <p>User can filter product by using product price low to high & high to low.</p>
 -   <p>User can add product to wishlist.</p>
 -   <p>User can remove product from wishlist.</p>
+-   <p>User can show all wishlist products.</p>
+-   <p>User can move product from wishlist to cart.</p>
+-   <p>User can add product save for later.</p>
+-   <p>User can remove product from wishlist.</p>
 -   <p>User can add product to product Cart.</p>
 -   <p>User can remove product from product Cart.</p>
+-   <p>Admin can create cupons.</p>
+-   <p>Admin can apply cupons.</p>
+-   <p>Admin add coupons expiry date.</p>
+-   <p>User can checkout with cash on delivery.</p>
