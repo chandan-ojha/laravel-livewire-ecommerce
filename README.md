@@ -22,4 +22,5 @@
 -   <p>Admin can create cupons.</p>
 -   <p>Admin can apply cupons.</p>
 -   <p>Admin add coupons expiry date.</p>
--   <p>User can checkout with cash on delivery.</p>
+-   <p>User can checkout with cash on delivery by using stripe payment gateway.</p>
+-   <p>Admin can show order and order details.</p>
