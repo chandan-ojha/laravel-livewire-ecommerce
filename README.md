@@ -24,3 +24,7 @@
 -   <p>Admin add coupons expiry date.</p>
 -   <p>User can checkout with cash on delivery by using stripe payment gateway.</p>
 -   <p>Admin can show order and order details.</p>
+-   <p>User can show order and order details.</p>
+-   <p>Admin can update Order Status.</p>
+-   <p>Admin can show order and order details.</p>
+-   <p>User can order Cancellation.</p>
