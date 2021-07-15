@@ -21,7 +21,7 @@
             <div class="col-lg-9 col-md-8 col-sm-8 col-xs-12 main-content-area">
                 <div class="wrap-product-detail">
                     <div class="detail-media">
-                        <div class="product-gallery">
+                        <div class="product-gallery" wire:ignore>
                             <ul class="slides">
 
                                 <li data-thumb="{{ asset('assets/images/products') }}/{{$product->image}}">
