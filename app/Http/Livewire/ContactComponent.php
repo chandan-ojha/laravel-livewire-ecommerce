@@ -9,8 +9,11 @@ use Livewire\Component;
 class ContactComponent extends Component
 {
     public $name;
+
     public $email;
+
     public $phone;
+
     public $comment;
 
     public function updated($fields)
@@ -19,7 +22,7 @@ class ContactComponent extends Component
             'name' => 'required',
             'email' => 'required|email',
             'phone' => 'required',
-            'comment' => 'required'
+            'comment' => 'required',
         ]);
     }
 
@@ -29,7 +32,7 @@ class ContactComponent extends Component
             'name' => 'required',
             'email' => 'required|email',
             'phone' => 'required',
-            'comment' => 'required'
+            'comment' => 'required',
         ]);
 
         $contact = new Contact();
@@ -44,6 +47,7 @@ class ContactComponent extends Component
     public function render()
     {
         $setting = Setting::find(1);
+
         return view('livewire.contact-component', ['setting' => $setting])->layout('layouts.base');
     }
 }

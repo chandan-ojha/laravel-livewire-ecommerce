@@ -9,7 +9,7 @@ class Order extends Model
 {
     use HasFactory;
 
-    protected $table = "orders";
+    protected $table = 'orders';
 
     public function user()
     {

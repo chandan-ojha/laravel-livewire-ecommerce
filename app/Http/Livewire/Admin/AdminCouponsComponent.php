@@ -13,9 +13,11 @@ class AdminCouponsComponent extends Component
         $coupon->delete();
         session()->flash('message', 'Coupon has been deleted successfully!');
     }
+
     public function render()
     {
         $coupons = Coupon::all();
+
         return view('livewire.admin.admin-coupons-component', ['coupons' => $coupons])->layout('layouts.base');
     }
 }

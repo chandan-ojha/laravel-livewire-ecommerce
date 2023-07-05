@@ -17,31 +17,57 @@ use Stripe;
 class CheckoutComponent extends Component
 {
     public $ship_to_different;
+
     public $firstname;
+
     public $lastname;
+
     public $email;
+
     public $mobile;
+
     public $line1;
+
     public $line2;
+
     public $city;
+
     public $province;
+
     public $country;
+
     public $zipcode;
+
     public $s_firstname;
+
     public $s_lastname;
+
     public $s_email;
+
     public $s_mobile;
+
     public $s_line1;
+
     public $s_line2;
+
     public $s_city;
+
     public $s_province;
+
     public $s_country;
+
     public $s_zipcode;
+
     public $paymentmode;
+
     public $thankyou;
+
     public $card_no;
+
     public $exp_month;
+
     public $exp_year;
+
     public $cvc;
 
     public function updated($fields)
@@ -56,7 +82,7 @@ class CheckoutComponent extends Component
             'province' => 'required',
             'country' => 'required',
             'zipcode' => 'required',
-            'paymentmode' => 'required'
+            'paymentmode' => 'required',
         ]);
 
         if ($this->ship_to_different) {
@@ -69,7 +95,7 @@ class CheckoutComponent extends Component
                 's_city' => 'required',
                 's_province' => 'required',
                 's_country' => 'required',
-                's_zipcode' => 'required'
+                's_zipcode' => 'required',
 
             ]);
         }
@@ -78,10 +104,11 @@ class CheckoutComponent extends Component
                 'card_no' => 'required|numeric',
                 'exp_month' => 'required|numeric',
                 'exp_year' => 'required|numeric',
-                'cvc' => 'required|numeric'
+                'cvc' => 'required|numeric',
             ]);
         }
     }
+
     public function placeOrder()
     {
         $this->validate([
@@ -94,7 +121,7 @@ class CheckoutComponent extends Component
             'province' => 'required',
             'country' => 'required',
             'zipcode' => 'required',
-            'paymentmode' => 'required'
+            'paymentmode' => 'required',
 
         ]);
 
@@ -103,7 +130,7 @@ class CheckoutComponent extends Component
                 'card_no' => 'required|numeric',
                 'exp_month' => 'required|numeric',
                 'exp_year' => 'required|numeric',
-                'cvc' => 'required|numeric'
+                'cvc' => 'required|numeric',
             ]);
         }
 
@@ -147,11 +174,11 @@ class CheckoutComponent extends Component
                 's_city' => 'required',
                 's_province' => 'required',
                 's_country' => 'required',
-                's_zipcode' => 'required'
+                's_zipcode' => 'required',
 
             ]);
 
-            $shipping =  new Shipping();
+            $shipping = new Shipping();
             $shipping->order_id = $order->id;
             $shipping->firstname = $this->s_firstname;
             $shipping->lastname = $this->s_lastname;
@@ -169,26 +196,26 @@ class CheckoutComponent extends Component
         if ($this->paymentmode == 'cod') {
             $this->makeTransaction($order->id, 'pending');
             $this->resetCart();
-        } else if ($this->paymentmode == 'card') {
+        } elseif ($this->paymentmode == 'card') {
             $stripe = Stripe::make(env('STRIPE_KEY'));
 
             try {
-                $token =  $stripe->tokens()->create([
+                $token = $stripe->tokens()->create([
                     'card' => [
                         'number' => $this->card_no,
                         'exp_month' => $this->exp_month,
                         'exp_year' => $this->exp_year,
-                        'cvc' => $this->cvc
-                    ]
+                        'cvc' => $this->cvc,
+                    ],
                 ]);
 
-                if (!isset($token['id'])) {
+                if (! isset($token['id'])) {
                     session()->flash('stripe_error', 'The stripe  token was not generated correctly!');
                     $this->thankyou = 0;
                 }
 
                 $customer = $stripe->customers()->create([
-                    'name' => $this->firstname . ' ' . $this->lastname,
+                    'name' => $this->firstname.' '.$this->lastname,
                     'email' => $this->email,
                     'phone' => $this->mobile,
                     'address' => [
@@ -196,27 +223,27 @@ class CheckoutComponent extends Component
                         'postal_code' => $this->zipcode,
                         'city' => $this->city,
                         'state' => $this->province,
-                        'country' => $this->country
+                        'country' => $this->country,
                     ],
 
                     'shipping' => [
-                        'name' => $this->firstname . ' ' . $this->lastname,
+                        'name' => $this->firstname.' '.$this->lastname,
                         'address' => [
                             'line1' => $this->line1,
                             'postal_code' => $this->zipcode,
                             'city' => $this->city,
                             'state' => $this->province,
-                            'country' => $this->country
+                            'country' => $this->country,
                         ],
                     ],
-                    'source' => $token['id']
+                    'source' => $token['id'],
                 ]);
 
                 $charge = $stripe->charges()->create([
                     'customer' => $customer['id'],
                     'currency' => 'USD',
-                    'amount'  => session()->get('checkout')['total'],
-                    'description' => 'Payment for order no' . $order->id
+                    'amount' => session()->get('checkout')['total'],
+                    'description' => 'Payment for order no'.$order->id,
                 ]);
 
                 if ($charge['status'] == 'succeeded') {
@@ -258,11 +285,11 @@ class CheckoutComponent extends Component
 
     public function verifyForCheckout()
     {
-        if (!Auth::check()) {
+        if (! Auth::check()) {
             return redirect()->route('login');
-        } else if ($this->thankyou) {
+        } elseif ($this->thankyou) {
             return redirect()->route('thankyou');
-        } else if (!session()->get('checkout')) {
+        } elseif (! session()->get('checkout')) {
             return redirect()->route('product.cart');
         }
     }
@@ -270,6 +297,7 @@ class CheckoutComponent extends Component
     public function render()
     {
         $this->verifyForCheckout();
-        return view('livewire.checkout-component')->layout("layouts.base");
+
+        return view('livewire.checkout-component')->layout('layouts.base');
     }
 }

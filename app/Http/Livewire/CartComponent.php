@@ -4,17 +4,22 @@ namespace App\Http\Livewire;
 
 use App\Models\Coupon;
 use Carbon\Carbon;
-use Livewire\Component;
 use Cart;
 use Illuminate\Support\Facades\Auth;
+use Livewire\Component;
 
 class CartComponent extends Component
 {
     public $haveCouponCode;
+
     public $couponCode;
+
     public $discount;
+
     public $subtotalAfterDiscount;
+
     public $taxAfterDiscount;
+
     public $totalAfterDiscount;
 
     //increase cart quantity
@@ -81,8 +86,9 @@ class CartComponent extends Component
     public function applyCouponCode()
     {
         $coupon = Coupon::where('code', $this->couponCode)->where('expiry_date', '>=', Carbon::today())->where('cart_value', '<=', Cart::instance('cart')->subtotal())->first();
-        if (!$coupon) {
+        if (! $coupon) {
             session()->flash('coupon_message', 'Coupon code is invalid');
+
             return;
         }
 
@@ -90,7 +96,7 @@ class CartComponent extends Component
             'code' => $coupon->code,
             'type' => $coupon->type,
             'value' => $coupon->value,
-            'cart_value' => $coupon->cart_value
+            'cart_value' => $coupon->cart_value,
         ]);
     }
 
@@ -127,8 +133,9 @@ class CartComponent extends Component
 
     public function setAmountForCheckout()
     {
-        if (!Cart::instance('cart')->count() > 0) {
+        if (! Cart::instance('cart')->count() > 0) {
             session()->forget('checkout');
+
             return;
         }
         if (session()->has('coupon')) {
@@ -136,14 +143,14 @@ class CartComponent extends Component
                 'discount' => $this->discount,
                 'subtotal' => $this->subtotalAfterDiscount,
                 'tax' => $this->taxAfterDiscount,
-                'total' => $this->totalAfterDiscount
+                'total' => $this->totalAfterDiscount,
             ]);
         } else {
             session()->put('checkout', [
                 'discount' => 0,
                 'subtotal' => Cart::instance('cart')->subtotal(),
                 'tax' => Cart::instance('cart')->tax(),
-                'total' => Cart::instance('cart')->total()
+                'total' => Cart::instance('cart')->total(),
             ]);
         }
     }
@@ -161,6 +168,7 @@ class CartComponent extends Component
         if (Auth::check()) {
             Cart::instance('cart')->store(Auth::user()->email);
         }
-        return view('livewire.cart-component')->layout("layouts.base");
+
+        return view('livewire.cart-component')->layout('layouts.base');
     }
 }

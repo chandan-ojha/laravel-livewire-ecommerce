@@ -2,8 +2,8 @@
 
 namespace App\Http\Livewire;
 
-use Livewire\Component;
 use Cart;
+use Livewire\Component;
 
 class WishlistComponent extends Component
 {
@@ -13,6 +13,7 @@ class WishlistComponent extends Component
             if ($witem->id == $product_id) {
                 Cart::instance('wishlist')->remove($witem->rowId);
                 $this->emitTo('wishlist-count-component', 'refreshComponent');
+
                 return;
             }
         }

@@ -9,5 +9,5 @@ class HomeSlider extends Model
 {
     use HasFactory;
 
-    protected $table = "home_sliders";
+    protected $table = 'home_sliders';
 }

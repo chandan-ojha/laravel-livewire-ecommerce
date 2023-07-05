@@ -8,6 +8,7 @@ use Livewire\Component;
 class AdminSaleComponent extends Component
 {
     public $sale_date;
+
     public $status;
 
     public function mount()

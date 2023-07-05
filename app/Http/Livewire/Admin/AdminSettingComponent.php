@@ -8,14 +8,23 @@ use Livewire\Component;
 class AdminSettingComponent extends Component
 {
     public $email;
+
     public $phone;
+
     public $phone2;
+
     public $address;
+
     public $map;
+
     public $twiter;
+
     public $facebook;
+
     public $pinterest;
+
     public $instagram;
+
     public $youtube;
 
     public function mount()
@@ -34,6 +43,7 @@ class AdminSettingComponent extends Component
             $this->youtube = $setting->youtube;
         }
     }
+
     public function updated($fields)
     {
         $this->validateOnly($fields, [
@@ -46,10 +56,11 @@ class AdminSettingComponent extends Component
             'facebook' => 'required',
             'pinterest' => 'required',
             'instagram' => 'required',
-            'youtube' => 'required'
+            'youtube' => 'required',
 
         ]);
     }
+
     public function saveSettings()
     {
         $this->validate([
@@ -62,12 +73,12 @@ class AdminSettingComponent extends Component
             'facebook' => 'required',
             'pinterest' => 'required',
             'instagram' => 'required',
-            'youtube' => 'required'
+            'youtube' => 'required',
 
         ]);
 
         $setting = Setting::find(1);
-        if (!$setting) {
+        if (! $setting) {
             $setting = new Setting();
         }
         $setting->email = $this->email;
@@ -83,7 +94,6 @@ class AdminSettingComponent extends Component
         $setting->save();
         session()->flash('message', 'Settings has been saved successfully!');
     }
-
 
     public function render()
     {

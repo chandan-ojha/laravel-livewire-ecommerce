@@ -8,9 +8,13 @@ use Livewire\Component;
 class AdminAddCouponComponent extends Component
 {
     public $code;
+
     public $type;
+
     public $value;
+
     public $cart_value;
+
     public $expiry_date;
 
     public function updated($fields)
@@ -20,7 +24,7 @@ class AdminAddCouponComponent extends Component
             'type' => 'required',
             'value' => 'required|numeric',
             'cart_value' => 'required|numeric',
-            'expiry_date' => 'required'
+            'expiry_date' => 'required',
         ]);
     }
 
@@ -31,7 +35,7 @@ class AdminAddCouponComponent extends Component
             'type' => 'required',
             'value' => 'required|numeric',
             'cart_value' => 'required|numeric',
-            'expiry_date' => 'required'
+            'expiry_date' => 'required',
         ]);
         $coupon = new Coupon();
         $coupon->code = $this->code;

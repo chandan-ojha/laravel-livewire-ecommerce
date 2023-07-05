@@ -2,8 +2,8 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\HomeCategory;
 use App\Models\Category;
+use App\Models\HomeCategory;
 use App\Models\HomeSlider;
 use App\Models\Product;
 use App\Models\Sale;
@@ -27,6 +27,7 @@ class HomeComponent extends Component
             Cart::instance('cart')->restore(Auth::user()->email);
             Cart::instance('wishlist')->restore(Auth::user()->email);
         }
+
         return view('livewire.home-component', ['sliders' => $sliders, 'lproducts' => $lproducts, 'categories' => $categories, 'no_of_products' => $no_of_products, 'sproducts' => $sproducts, 'sale' => $sale])->layout('layouts.base');
     }
 }
