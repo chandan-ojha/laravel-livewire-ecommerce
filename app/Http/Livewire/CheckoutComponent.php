@@ -171,7 +171,7 @@ class CheckoutComponent extends Component
         }
 
         if ($this->paymentmode == 'cod') {
-            $this->makeTransaction('$order->id', 'pending');
+            $this->makeTransaction($order->id, 'pending');
             $this->resetCart();
         } else if ($this->paymentmode == 'card') {
             $stripe = Stripe::make(env('STRIPE_KEY'));
