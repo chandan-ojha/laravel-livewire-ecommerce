@@ -17,7 +17,6 @@ use Stripe;
 class CheckoutComponent extends Component
 {
     public $ship_to_different;
-
     public $firstname;
     public $lastname;
     public $email;
@@ -28,7 +27,6 @@ class CheckoutComponent extends Component
     public $province;
     public $country;
     public $zipcode;
-
     public $s_firstname;
     public $s_lastname;
     public $s_email;
@@ -39,10 +37,8 @@ class CheckoutComponent extends Component
     public $s_province;
     public $s_country;
     public $s_zipcode;
-
     public $paymentmode;
     public $thankyou;
-
     public $card_no;
     public $exp_month;
     public $exp_year;
