@@ -95,6 +95,7 @@ class CartComponent extends Component
 
         if (! $coupon) {
             session()->flash('coupon_message', 'Coupon code is invalid');
+
             return;
         }
 
