@@ -60,7 +60,9 @@ class CartComponent extends Component
     {
         $item = Cart::instance('cart')->get($rowId);
         Cart::instance('cart')->remove($rowId);
-        Cart::instance('saveForLater')->add($item->id, $item->name, 1, $item->price)->associate('App\Models\Product');
+        Cart::instance('saveForLater')
+            ->add($item->id, $item->name, 1, $item->price)
+            ->associate('App\Models\Product');
         $this->emitTo('cart-count-component', 'refreshComponent');
         session()->flash('success_message', 'Item has been saved for later');
     }
@@ -70,7 +72,9 @@ class CartComponent extends Component
     {
         $item = Cart::instance('saveForLater')->get($rowId);
         Cart::instance('saveForLater')->remove($rowId);
-        Cart::instance('cart')->add($item->id, $item->name, 1, $item->price)->associate('App\Models\Product');
+        Cart::instance('cart')
+            ->add($item->id, $item->name, 1, $item->price)
+            ->associate('App\Models\Product');
         $this->emitTo('cart-count-component', 'refreshComponent');
         session()->flash('s_success_message', 'Item has been moved to cart');
     }
@@ -85,10 +89,12 @@ class CartComponent extends Component
     //Apply Coupon Code
     public function applyCouponCode()
     {
-        $coupon = Coupon::where('code', $this->couponCode)->where('expiry_date', '>=', Carbon::today())->where('cart_value', '<=', Cart::instance('cart')->subtotal())->first();
+        $coupon = Coupon::where('code', $this->couponCode)
+            ->where('expiry_date', '>=', Carbon::today())
+            ->where('cart_value', '<=', Cart::instance('cart')->subtotal())->first();
+
         if (! $coupon) {
             session()->flash('coupon_message', 'Coupon code is invalid');
-
             return;
         }
 
