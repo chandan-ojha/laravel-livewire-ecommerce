@@ -9,11 +9,8 @@ use Livewire\Component;
 class AdminEditCategoryComponent extends Component
 {
     public $category_slug;
-
     public $category_id;
-
     public $name;
-
     public $slug;
 
     public function mount($category_slug)

@@ -8,15 +8,10 @@ use Livewire\Component;
 class AdminEditCouponComponent extends Component
 {
     public $code;
-
     public $type;
-
     public $value;
-
     public $cart_value;
-
     public $coupon_id;
-
     public $expiry_date;
 
     public function mount($coupon_id)

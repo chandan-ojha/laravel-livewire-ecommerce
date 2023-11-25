@@ -9,11 +9,8 @@ use Livewire\Component;
 class ContactComponent extends Component
 {
     public $name;
-
     public $email;
-
     public $phone;
-
     public $comment;
 
     public function updated($fields)
@@ -48,6 +45,9 @@ class ContactComponent extends Component
     {
         $setting = Setting::find(1);
 
-        return view('livewire.contact-component', ['setting' => $setting])->layout('layouts.base');
+        return view('livewire.contact-component',
+            [
+                'setting' => $setting
+            ])->layout('layouts.base');
     }
 }

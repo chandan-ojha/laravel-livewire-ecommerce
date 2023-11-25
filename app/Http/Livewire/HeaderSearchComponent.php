@@ -8,9 +8,7 @@ use Livewire\Component;
 class HeaderSearchComponent extends Component
 {
     public $search;
-
     public $product_cat;
-
     public $product_cat_id;
 
     public function mount()

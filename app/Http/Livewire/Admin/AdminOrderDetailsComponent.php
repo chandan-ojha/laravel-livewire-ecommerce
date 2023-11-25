@@ -18,6 +18,9 @@ class AdminOrderDetailsComponent extends Component
     {
         $order = Order::find($this->order_id);
 
-        return view('livewire.admin.admin-order-details-component', ['order' => $order])->layout('layouts.base');
+        return view('livewire.admin.admin-order-details-component',
+            [
+                'order' => $order
+            ])->layout('layouts.base');
     }
 }

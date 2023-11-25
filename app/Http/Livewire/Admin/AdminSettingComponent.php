@@ -8,23 +8,14 @@ use Livewire\Component;
 class AdminSettingComponent extends Component
 {
     public $email;
-
     public $phone;
-
     public $phone2;
-
     public $address;
-
     public $map;
-
     public $twiter;
-
     public $facebook;
-
     public $pinterest;
-
     public $instagram;
-
     public $youtube;
 
     public function mount()
@@ -78,7 +69,7 @@ class AdminSettingComponent extends Component
         ]);
 
         $setting = Setting::find(1);
-        if (! $setting) {
+        if (!$setting) {
             $setting = new Setting();
         }
         $setting->email = $this->email;

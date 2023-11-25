@@ -28,6 +28,14 @@ class HomeComponent extends Component
             Cart::instance('wishlist')->restore(Auth::user()->email);
         }
 
-        return view('livewire.home-component', ['sliders' => $sliders, 'lproducts' => $lproducts, 'categories' => $categories, 'no_of_products' => $no_of_products, 'sproducts' => $sproducts, 'sale' => $sale])->layout('layouts.base');
+        return view('livewire.home-component',
+            [
+                'sliders' => $sliders,
+                'lproducts' => $lproducts,
+                'categories' => $categories,
+                'no_of_products' => $no_of_products,
+                'sproducts' => $sproducts,
+                'sale' => $sale
+            ])->layout('layouts.base');
     }
 }

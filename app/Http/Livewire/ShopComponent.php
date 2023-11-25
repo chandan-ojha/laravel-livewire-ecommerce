@@ -12,11 +12,8 @@ use Livewire\WithPagination;
 class ShopComponent extends Component
 {
     public $sorting;
-
     public $pagesize;
-
     public $min_price;
-
     public $max_price;
 
     public function mount()
@@ -30,7 +27,10 @@ class ShopComponent extends Component
 
     public function store($product_id, $product_name, $product_price)
     {
-        Cart::instance('cart')->add($product_id, $product_name, 1, $product_price)->associate('App\Models\Product');
+        Cart::instance('cart')
+            ->add($product_id, $product_name, 1, $product_price)
+            ->associate('App\Models\Product');
+
         session()->flash('success_message', 'Item added in Cart');
 
         return redirect()->route('product.cart');
@@ -38,7 +38,10 @@ class ShopComponent extends Component
 
     public function addToWishlist($product_id, $product_name, $product_price)
     {
-        Cart::instance('wishlist')->add($product_id, $product_name, 1, $product_price)->associate('App\Models\Product');
+        Cart::instance('wishlist')
+            ->add($product_id, $product_name, 1, $product_price)
+            ->associate('App\Models\Product');
+
         $this->emitTo('wishlist-count-component', 'refreshComponent');
     }
 
@@ -82,6 +85,10 @@ class ShopComponent extends Component
             Cart::instance('wishlist')->store(Auth::user()->email);
         }
 
-        return view('livewire.shop-component', ['products' => $products, 'categories' => $categories])->layout('layouts.base');
+        return view('livewire.shop-component',
+            [
+                'products' => $products,
+                'categories' => $categories
+            ])->layout('layouts.base');
     }
 }

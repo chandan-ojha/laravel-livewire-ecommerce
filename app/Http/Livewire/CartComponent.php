@@ -11,15 +11,10 @@ use Livewire\Component;
 class CartComponent extends Component
 {
     public $haveCouponCode;
-
     public $couponCode;
-
     public $discount;
-
     public $subtotalAfterDiscount;
-
     public $taxAfterDiscount;
-
     public $totalAfterDiscount;
 
     //increase cart quantity
@@ -93,7 +88,7 @@ class CartComponent extends Component
             ->where('expiry_date', '>=', Carbon::today())
             ->where('cart_value', '<=', Cart::instance('cart')->subtotal())->first();
 
-        if (! $coupon) {
+        if (!$coupon) {
             session()->flash('coupon_message', 'Coupon code is invalid');
 
             return;
@@ -140,7 +135,7 @@ class CartComponent extends Component
 
     public function setAmountForCheckout()
     {
-        if (! Cart::instance('cart')->count() > 0) {
+        if (!Cart::instance('cart')->count() > 0) {
             session()->forget('checkout');
 
             return;

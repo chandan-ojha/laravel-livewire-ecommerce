@@ -83,31 +83,40 @@
 
                     <ul class="product-list grid-products equal-container">
                         @php
-                        $witems = Cart::instance('wishlist')->content()->pluck('id');
+                            $witems = Cart::instance('wishlist')->content()->pluck('id');
                         @endphp
 
                         @foreach($products as $product)
-                        <li class="col-lg-4 col-md-6 col-sm-6 col-xs-6 ">
-                            <div class="product product-style-3 equal-elem ">
-                                <div class="product-thumnail">
-                                    <a href="{{route('product.details',['slug'=>$product->slug])}}" title="{{$product->name}}">
-                                        <figure><img src="{{ asset('assets/images/products') }}/{{$product->image}}" alt="{{$product->name}}"></figure>
-                                    </a>
-                                </div>
-                                <div class="product-info">
-                                    <a href="{{route('product.details',['slug'=>$product->slug])}}" class="product-name"><span>{{$product->name}}</span></a>
-                                    <div class="wrap-price"><span class="product-price">{{$product->regular_price}}</span></div>
-                                    <a href="#" class="btn add-to-cart" wire:click.prevent="store({{$product->id}},'{{$product->name}}',{{$product->regular_price}})">Add To Cart</a>
-                                    <div class="product-wish">
-                                        @if($witems->contains($product->id))
-                                        <a href="#" wire:click.prevent="removeFromWishlist({{$product->id}})"> <i class="fa fa-heart fill-heart"> </i> </a>
-                                        @else
-                                        <a href="#" wire:click.prevent="addToWishlist({{$product->id}},'{{$product->name}}',{{$product->regular_price}})"> <i class="fa fa-heart"> </i> </a>
-                                        @endif
+                            <li class="col-lg-4 col-md-6 col-sm-6 col-xs-6 ">
+                                <div class="product product-style-3 equal-elem ">
+                                    <div class="product-thumnail">
+                                        <a href="{{route('product.details',['slug'=>$product->slug])}}"
+                                           title="{{$product->name}}">
+                                            <figure><img src="{{ asset('assets/images/products') }}/{{$product->image}}"
+                                                         alt="{{$product->name}}"></figure>
+                                        </a>
+                                    </div>
+                                    <div class="product-info">
+                                        <a href="{{route('product.details',['slug'=>$product->slug])}}"
+                                           class="product-name"><span>{{$product->name}}</span></a>
+                                        <div class="wrap-price"><span
+                                                class="product-price">{{$product->regular_price}}</span></div>
+                                        <a href="#" class="btn add-to-cart"
+                                           wire:click.prevent="store({{$product->id}},'{{$product->name}}',{{$product->regular_price}})">Add
+                                            To Cart</a>
+                                        <div class="product-wish">
+                                            @if($witems->contains($product->id))
+                                                <a href="#" wire:click.prevent="removeFromWishlist({{$product->id}})">
+                                                    <i class="fa fa-heart fill-heart"> </i> </a>
+                                            @else
+                                                <a href="#"
+                                                   wire:click.prevent="addToWishlist({{$product->id}},'{{$product->name}}',{{$product->regular_price}})">
+                                                    <i class="fa fa-heart"> </i> </a>
+                                            @endif
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </li>
+                            </li>
                         @endforeach
                     </ul>
                 </div>
@@ -130,9 +139,10 @@
                     <div class="widget-content">
                         <ul class="list-category">
                             @foreach($categories as $category)
-                            <li class="category-item">
-                                <a href="{{route('product.category',['category_slug'=>$category->slug])}}" class="cate-link">{{$category->name}}</a>
-                            </li>
+                                <li class="category-item">
+                                    <a href="{{route('product.category',['category_slug'=>$category->slug])}}"
+                                       class="cate-link">{{$category->name}}</a>
+                                </li>
                             @endforeach
                         </ul>
                     </div>
@@ -149,10 +159,17 @@
                             <li class="list-item"><a class="filter-link " href="#">Sound & Speaker</a></li>
                             <li class="list-item"><a class="filter-link " href="#">Shop Smartphone & Tablets</a></li>
                             <li class="list-item default-hiden"><a class="filter-link " href="#">Printer & Ink</a></li>
-                            <li class="list-item default-hiden"><a class="filter-link " href="#">CPUs & Prosecsors</a></li>
-                            <li class="list-item default-hiden"><a class="filter-link " href="#">Sound & Speaker</a></li>
-                            <li class="list-item default-hiden"><a class="filter-link " href="#">Shop Smartphone & Tablets</a></li>
-                            <li class="list-item"><a data-label='Show less<i class="fa fa-angle-up" aria-hidden="true"></i>' class="btn-control control-show-more" href="#">Show more<i class="fa fa-angle-down" aria-hidden="true"></i></a></li>
+                            <li class="list-item default-hiden"><a class="filter-link " href="#">CPUs & Prosecsors</a>
+                            </li>
+                            <li class="list-item default-hiden"><a class="filter-link " href="#">Sound & Speaker</a>
+                            </li>
+                            <li class="list-item default-hiden"><a class="filter-link " href="#">Shop Smartphone &
+                                    Tablets</a></li>
+                            <li class="list-item"><a
+                                    data-label='Show less<i class="fa fa-angle-up" aria-hidden="true"></i>'
+                                    class="btn-control control-show-more" href="#">Show more<i class="fa fa-angle-down"
+                                                                                               aria-hidden="true"></i></a>
+                            </li>
                         </ul>
                     </div>
                 </div><!-- brand widget-->
@@ -188,7 +205,8 @@
                             <li class="list-item"><a class="filter-link " href="#">xl</a></li>
                         </ul>
                         <div class="widget-banner">
-                            <figure><img src="{{ asset('assets/images/size-banner-widget.jpg') }}" width="270" height="331" alt=""></figure>
+                            <figure><img src="{{ asset('assets/images/size-banner-widget.jpg') }}" width="270"
+                                         height="331" alt=""></figure>
                         </div>
                     </div>
                 </div><!-- Size -->
@@ -200,8 +218,10 @@
                             <li class="product-item">
                                 <div class="product product-widget-style">
                                     <div class="thumbnnail">
-                                        <a href="detail.html" title="Radiant-360 R6 Wireless Omnidirectional Speaker [White]">
-                                            <figure><img src="{{ asset('assets/images/products/digital_01.jpg') }}" alt=""></figure>
+                                        <a href="detail.html"
+                                           title="Radiant-360 R6 Wireless Omnidirectional Speaker [White]">
+                                            <figure><img src="{{ asset('assets/images/products/digital_01.jpg') }}"
+                                                         alt=""></figure>
                                         </a>
                                     </div>
                                     <div class="product-info">
@@ -214,8 +234,10 @@
                             <li class="product-item">
                                 <div class="product product-widget-style">
                                     <div class="thumbnnail">
-                                        <a href="detail.html" title="Radiant-360 R6 Wireless Omnidirectional Speaker [White]">
-                                            <figure><img src="{{ asset('assets/images/products/digital_17.jpg') }}" alt=""></figure>
+                                        <a href="detail.html"
+                                           title="Radiant-360 R6 Wireless Omnidirectional Speaker [White]">
+                                            <figure><img src="{{ asset('assets/images/products/digital_17.jpg') }}"
+                                                         alt=""></figure>
                                         </a>
                                     </div>
                                     <div class="product-info">
@@ -228,8 +250,10 @@
                             <li class="product-item">
                                 <div class="product product-widget-style">
                                     <div class="thumbnnail">
-                                        <a href="detail.html" title="Radiant-360 R6 Wireless Omnidirectional Speaker [White]">
-                                            <figure><img src="{{ asset('assets/images/products/digital_18.jpg') }}" alt=""></figure>
+                                        <a href="detail.html"
+                                           title="Radiant-360 R6 Wireless Omnidirectional Speaker [White]">
+                                            <figure><img src="{{ asset('assets/images/products/digital_18.jpg') }}"
+                                                         alt=""></figure>
                                         </a>
                                     </div>
                                     <div class="product-info">
@@ -242,8 +266,10 @@
                             <li class="product-item">
                                 <div class="product product-widget-style">
                                     <div class="thumbnnail">
-                                        <a href="detail.html" title="Radiant-360 R6 Wireless Omnidirectional Speaker [White]">
-                                            <figure><img src="{{ asset('assets/images/products/digital_20.jpg') }}" alt=""></figure>
+                                        <a href="detail.html"
+                                           title="Radiant-360 R6 Wireless Omnidirectional Speaker [White]">
+                                            <figure><img src="{{ asset('assets/images/products/digital_20.jpg') }}"
+                                                         alt=""></figure>
                                         </a>
                                     </div>
                                     <div class="product-info">
@@ -268,25 +294,27 @@
 </main>
 
 @push('scripts')
-<script>
-    var slider = document.getElementById('slider');
-    noUiSlider.create(slider, {
-        start: [1, 1000],
-        connect: true,
-        range: {
-            'min': 1,
-            'max': 1000
-        },
-        pips: {
-            mode: 'steps',
-            stepped: true,
-            density: 4
-        }
-    });
+    <script>
+        var slider = document.getElementById('slider');
+        noUiSlider.create(slider, {
+            start: [1, 1000],
+            connect: true,
+            range: {
+                'min': 1,
+                'max': 1000
+            },
+            pips: {
+                mode: 'steps',
+                stepped: true,
+                density: 4
+            }
+        });
 
-    slider.noUiSlider.on('update', function(value) {
-        @this.set('min_price', value[0]);
-        @this.set('max_price', value[1]);
-    });
-</script>
+        slider.noUiSlider.on('update', function (value) {
+            @this.
+            set('min_price', value[0]);
+            @this.
+            set('max_price', value[1]);
+        });
+    </script>
 @endpush

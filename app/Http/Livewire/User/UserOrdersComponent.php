@@ -12,6 +12,8 @@ class UserOrdersComponent extends Component
     {
         $orders = Order::where('user_id', Auth::user()->id)->paginate(12);
 
-        return view('livewire.user.user-orders-component', ['orders' => $orders])->layout('layouts.base');
+        return view('livewire.user.user-orders-component', [
+            'orders' => $orders
+        ])->layout('layouts.base');
     }
 }

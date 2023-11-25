@@ -12,19 +12,12 @@ class AdminEditHomeSliderComponent extends Component
     use WithFileUploads;
 
     public $title;
-
     public $subtitle;
-
     public $price;
-
     public $link;
-
     public $image;
-
     public $status;
-
     public $newimage;
-
     public $slider_id;
 
     public function mount($slide_id)
@@ -68,7 +61,7 @@ class AdminEditHomeSliderComponent extends Component
         $slider->price = $this->price;
         $slider->link = $this->link;
         if ($this->newimage) {
-            $imagename = Carbon::now()->timestamp.'.'.$this->newimage->extension();
+            $imagename = Carbon::now()->timestamp . '.' . $this->newimage->extension();
             $this->newimage->storeAs('sliders', $imagename);
             $slider->image = $imagename;
         }

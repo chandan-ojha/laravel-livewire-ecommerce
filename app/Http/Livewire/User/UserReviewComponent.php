@@ -9,9 +9,7 @@ use Livewire\Component;
 class UserReviewComponent extends Component
 {
     public $order_item_id;
-
     public $rating;
-
     public $comment;
 
     public function mount($order_item_id)
@@ -49,6 +47,9 @@ class UserReviewComponent extends Component
     {
         $orderItem = OrderItem::find($this->order_item_id);
 
-        return view('livewire.user.user-review-component', ['orderItem' => $orderItem])->layout('layouts.base');
+        return view('livewire.user.user-review-component',
+            [
+                'orderItem' => $orderItem
+            ])->layout('layouts.base');
     }
 }

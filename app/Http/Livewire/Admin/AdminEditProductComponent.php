@@ -14,35 +14,20 @@ class AdminEditProductComponent extends Component
     use WithFileUploads;
 
     public $name;
-
     public $slug;
-
     public $short_description;
-
     public $description;
-
     public $regular_price;
-
     public $sale_price;
-
     public $SKU;
-
     public $stock_status;
-
     public $featured;
-
     public $quantity;
-
     public $image;
-
     public $category_id;
-
     public $newimage;
-
     public $product_id;
-
     public $images;
-
     public $newimages;
 
     public function mount($product_slug)
@@ -122,8 +107,8 @@ class AdminEditProductComponent extends Component
         $product->quantity = $this->quantity;
 
         if ($this->newimage) {
-            unlink('assets/images/products'.'/'.$product->image);
-            $imageName = Carbon::now()->timestamp.'.'.$this->newimage->extension();
+            unlink('assets/images/products' . '/' . $product->image);
+            $imageName = Carbon::now()->timestamp . '.' . $this->newimage->extension();
             $this->newimage->storeAs('products', $imageName);
             $product->image = $imageName;
         }
@@ -133,15 +118,15 @@ class AdminEditProductComponent extends Component
                 $images = explode(',', $product->images);
                 foreach ($images as $image) {
                     if ($image) {
-                        unlink('assets/images/products'.'/'.$image);
+                        unlink('assets/images/products' . '/' . $image);
                     }
                 }
             }
             $imagesname = '';
             foreach ($this->newimages as $key => $image) {
-                $imgName = Carbon::now()->timestamp.$key.'.'.$image->extension();
+                $imgName = Carbon::now()->timestamp . $key . '.' . $image->extension();
                 $image->storeAs('products', $imgName);
-                $imagesname = $imagesname.','.$imgName;
+                $imagesname = $imagesname . ',' . $imgName;
             }
             $product->images = $imagesname;
         }
@@ -155,6 +140,9 @@ class AdminEditProductComponent extends Component
     {
         $categories = Category::all();
 
-        return view('livewire.admin.admin-edit-product-component', ['categories' => $categories])->layout('layouts.base');
+        return view('livewire.admin.admin-edit-product-component',
+            [
+                'categories' => $categories
+            ])->layout('layouts.base');
     }
 }

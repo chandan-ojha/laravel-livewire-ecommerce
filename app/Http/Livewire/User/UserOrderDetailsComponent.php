@@ -27,8 +27,13 @@ class UserOrderDetailsComponent extends Component
 
     public function render()
     {
-        $order = Order::where('user_id', Auth::user()->id)->where('id', $this->order_id)->first();
+        $order = Order::where('user_id', Auth::user()->id)
+            ->where('id', $this->order_id)
+            ->first();
 
-        return view('livewire.user.user-order-details-component', ['order' => $order])->layout('layouts.base');
+        return view('livewire.user.user-order-details-component',
+            [
+                'order' => $order
+            ])->layout('layouts.base');
     }
 }

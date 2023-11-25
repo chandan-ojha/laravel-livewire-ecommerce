@@ -9,7 +9,6 @@ use Livewire\Component;
 class AdminHomeCategoryComponent extends Component
 {
     public $selected_categories = [];
-
     public $numberofproducts;
 
     public function mount()
@@ -32,6 +31,9 @@ class AdminHomeCategoryComponent extends Component
     {
         $categories = Category::all();
 
-        return view('livewire.admin.admin-home-category-component', ['categories' => $categories])->layout('layouts.base');
+        return view('livewire.admin.admin-home-category-component',
+            [
+                'categories' => $categories
+            ])->layout('layouts.base');
     }
 }

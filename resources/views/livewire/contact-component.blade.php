@@ -17,7 +17,7 @@
                             <div class="contact-box contact-form">
                                 <h2 class="box-title">Leave a Message</h2>
                                 @if(Session::has('message'))
-                                <div class="alert alert-success" role="alert">{{Session::get('message')}}</div>
+                                    <div class="alert alert-success" role="alert">{{Session::get('message')}}</div>
                                 @endif
                                 <form name="frm-contact" wire:submit.prevent="sendMessage">
                                     <label for="name">Name<span>*</span></label>
@@ -44,7 +44,8 @@
                         <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
                             <div class="contact-box contact-info">
                                 <div class="wrap-map">
-                                    <iframe src="{{$setting->map}}" width="100%" height="320" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                                    <iframe src="{{$setting->map}}" width="100%" height="320" style="border:0;"
+                                            allowfullscreen="" loading="lazy"></iframe>
                                 </div>
                                 <h2 class="box-title">Contact Detail</h2>
                                 <div class="wrap-icon-box">

@@ -14,13 +14,13 @@ class AdminProductComponent extends Component
     {
         $product = Product::find($id);
         if ($product->image) {
-            unlink('assets/images/products'.'/'.$product->image);
+            unlink('assets/images/products' . '/' . $product->image);
         }
         if ($product->images) {
             $images = explode(',', $product->images);
             foreach ($images as $image) {
                 if ($image) {
-                    unlink('assets/images/products'.'/'.$image);
+                    unlink('assets/images/products' . '/' . $image);
                 }
             }
         }
@@ -32,6 +32,9 @@ class AdminProductComponent extends Component
     {
         $products = Product::paginate(10);
 
-        return view('livewire.admin.admin-product-component', ['products' => $products])->layout('layouts.base');
+        return view('livewire.admin.admin-product-component',
+            [
+                'products' => $products
+            ])->layout('layouts.base');
     }
 }

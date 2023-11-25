@@ -9,7 +9,6 @@ use Livewire\Component;
 class AdminAddCategoryComponent extends Component
 {
     public $name;
-
     public $slug;
 
     public function generateslug()

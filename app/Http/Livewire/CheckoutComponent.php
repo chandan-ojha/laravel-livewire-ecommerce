@@ -17,57 +17,31 @@ use Stripe;
 class CheckoutComponent extends Component
 {
     public $ship_to_different;
-
     public $firstname;
-
     public $lastname;
-
     public $email;
-
     public $mobile;
-
     public $line1;
-
     public $line2;
-
     public $city;
-
     public $province;
-
     public $country;
-
     public $zipcode;
-
     public $s_firstname;
-
     public $s_lastname;
-
     public $s_email;
-
     public $s_mobile;
-
     public $s_line1;
-
     public $s_line2;
-
     public $s_city;
-
     public $s_province;
-
     public $s_country;
-
     public $s_zipcode;
-
     public $paymentmode;
-
     public $thankyou;
-
     public $card_no;
-
     public $exp_month;
-
     public $exp_year;
-
     public $cvc;
 
     public function updated($fields)
@@ -209,13 +183,13 @@ class CheckoutComponent extends Component
                     ],
                 ]);
 
-                if (! isset($token['id'])) {
+                if (!isset($token['id'])) {
                     session()->flash('stripe_error', 'The stripe  token was not generated correctly!');
                     $this->thankyou = 0;
                 }
 
                 $customer = $stripe->customers()->create([
-                    'name' => $this->firstname.' '.$this->lastname,
+                    'name' => $this->firstname . ' ' . $this->lastname,
                     'email' => $this->email,
                     'phone' => $this->mobile,
                     'address' => [
@@ -227,7 +201,7 @@ class CheckoutComponent extends Component
                     ],
 
                     'shipping' => [
-                        'name' => $this->firstname.' '.$this->lastname,
+                        'name' => $this->firstname . ' ' . $this->lastname,
                         'address' => [
                             'line1' => $this->line1,
                             'postal_code' => $this->zipcode,
@@ -243,7 +217,7 @@ class CheckoutComponent extends Component
                     'customer' => $customer['id'],
                     'currency' => 'USD',
                     'amount' => session()->get('checkout')['total'],
-                    'description' => 'Payment for order no'.$order->id,
+                    'description' => 'Payment for order no' . $order->id,
                 ]);
 
                 if ($charge['status'] == 'succeeded') {
@@ -285,11 +259,11 @@ class CheckoutComponent extends Component
 
     public function verifyForCheckout()
     {
-        if (! Auth::check()) {
+        if (!Auth::check()) {
             return redirect()->route('login');
         } elseif ($this->thankyou) {
             return redirect()->route('thankyou');
-        } elseif (! session()->get('checkout')) {
+        } elseif (!session()->get('checkout')) {
             return redirect()->route('product.cart');
         }
     }
