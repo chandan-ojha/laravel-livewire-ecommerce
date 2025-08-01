@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Livewire;
 
 use App\Models\Category;
@@ -16,8 +15,8 @@ class CategoryComponent extends Component
 
     public function mount($category_slug)
     {
-        $this->sorting = 'default';
-        $this->pagesize = 12;
+        $this->sorting       = 'default';
+        $this->pagesize      = 12;
         $this->category_slug = $category_slug;
     }
 
@@ -34,8 +33,8 @@ class CategoryComponent extends Component
 
     public function render()
     {
-        $category = Category::where('slug', $this->category_slug)->first();
-        $category_id = $category->id;
+        $category      = Category::where('slug', $this->category_slug)->first();
+        $category_id   = $category->id;
         $category_name = $category->name;
 
         if ($this->sorting == 'date') {
@@ -59,9 +58,9 @@ class CategoryComponent extends Component
 
         return view('livewire.category-component',
             [
-                'products' => $products,
-                'categories' => $categories,
-                'category_name' => $category_name
+                'products'      => $products,
+                'categories'    => $categories,
+                'category_name' => $category_name,
             ])->layout('layouts.base');
     }
 }
