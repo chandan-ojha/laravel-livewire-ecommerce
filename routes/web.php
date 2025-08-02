@@ -1,6 +1,8 @@
 <?php
 
 //for admin
+
+use App\Http\Controllers\AppOptimizationController;
 use App\Http\Livewire\Admin\AdminAddCategoryComponent;
 use App\Http\Livewire\Admin\AdminAddCouponComponent;
 use App\Http\Livewire\Admin\AdminAddHomeSliderComponent;
@@ -54,6 +56,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 */
+
+//This route is used to clear the cache, view, config, and route cache
+Route::get('/optimized', [AppOptimizationController::class, 'optimize']);
 
 Route::get('/', HomeComponent::class);
 
