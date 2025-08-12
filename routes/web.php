@@ -3,6 +3,7 @@
 //for admin
 
 use App\Http\Controllers\AppOptimizationController;
+use App\Http\Livewire\Admin\AddClientComponent;
 use App\Http\Livewire\Admin\AdminAddCategoryComponent;
 use App\Http\Livewire\Admin\AdminAddCouponComponent;
 use App\Http\Livewire\Admin\AdminAddHomeSliderComponent;
@@ -22,6 +23,8 @@ use App\Http\Livewire\Admin\AdminOrderDetailsComponent;
 use App\Http\Livewire\Admin\AdminProductComponent;
 use App\Http\Livewire\Admin\AdminSaleComponent;
 use App\Http\Livewire\Admin\AdminSettingComponent;
+use App\Http\Livewire\Admin\ClientComponent;
+use App\Http\Livewire\Admin\EditClientComponent;
 use App\Http\Livewire\CartComponent;
 use App\Http\Livewire\CategoryComponent;
 use App\Http\Livewire\CheckoutComponent;
@@ -119,6 +122,10 @@ Route::middleware(['auth:sanctum', 'verified', 'authadmin'])->group(function () 
     Route::get('/admin/slider/edit/{slide_id}', AdminEditHomeSliderComponent::class)->name('admin.edithomeslider');
 
     Route::get('/admin/home-categories', AdminHomeCategoryComponent::class)->name('admin.homecategories');
+    //Client
+    Route::get('/admin/clients', ClientComponent::class)->name('admin.clients');
+    Route::get('/admin/client/add', AddClientComponent::class)->name('admin.addclient');
+    Route::get('/admin/client/edit/{client_id}', EditClientComponent::class)->name('admin.editclient');
 
     Route::get('/admin/sale', AdminSaleComponent::class)->name('admin.sale');
 

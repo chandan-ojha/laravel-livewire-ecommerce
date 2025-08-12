@@ -7394,3 +7394,19 @@ svg {
 .wrap-pagination-info .rounded-r-md {
     margin-left: 5px;
 }
+
+/* ===== Our Clients Section */
+.our_clients {
+    padding: 60px 0;
+}
+.our_clients .clients_title {
+    text-align: center;
+    font-weight: bold;
+    font-size: 30px;
+    margin: 0;
+}
+.our_clients .client_img img {
+    max-width: 100px;
+    margin: 0 auto;
+}
+/* ===== Our Clients Section End */

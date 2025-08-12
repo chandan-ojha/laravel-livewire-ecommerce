@@ -188,5 +188,18 @@
             </div>
         </div>
 
+        <!--Our Clients-->
+        <div class="our_clients">
+            <h2 class="clients_title">Our Clients</h2>
+            <div class="slide-carousel owl-carousel style-nav-1 " data-items="5" data-loop="false" data-nav="true"
+                data-dots="false"
+                data-responsive='{"0":{"items":"1"},"480":{"items":"2"},"768":{"items":"3"},"992":{"items":"4"},"1200":{"items":"5"}}'>
+                @foreach ($clients as $client)
+                    <div class="client_img">
+                        <img src="{{ asset('assets/images/clients') }}/{{ $client->image }}" alt="">
+                    </div>
+                @endforeach
+            </div>
+        </div>
     </div>
 </main>

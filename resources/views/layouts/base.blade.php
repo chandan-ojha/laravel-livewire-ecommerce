@@ -107,6 +107,12 @@
                                                     </li>
 
                                                     <li class="menu-item">
+                                                        <a title="Our Clients" href="{{ route('admin.clients') }}">
+                                                            Our Clients
+                                                        </a>
+                                                    </li>
+
+                                                    <li class="menu-item">
                                                         <a title="Sale Setting" href="{{ route('admin.sale') }}">Sale
                                                             Setting</a>
                                                     </li>
