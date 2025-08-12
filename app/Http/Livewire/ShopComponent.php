@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Livewire;
 
 use App\Models\Category;
@@ -18,7 +17,7 @@ class ShopComponent extends Component
 
     public function mount()
     {
-        $this->sorting = 'default';
+        $this->sorting  = 'default';
         $this->pagesize = 12;
 
         $this->min_price = 1;
@@ -78,7 +77,8 @@ class ShopComponent extends Component
                 ->paginate($this->pagesize);
         }
 
-        $categories = Category::all();
+        $categories       = Category::all();
+        $popular_products = Product::inRandomOrder()->limit(15)->get();
 
         if (Auth::check()) {
             Cart::instance('cart')->store(Auth::user()->email);
@@ -87,8 +87,9 @@ class ShopComponent extends Component
 
         return view('livewire.shop-component',
             [
-                'products' => $products,
-                'categories' => $categories
+                'products'         => $products,
+                'categories'       => $categories,
+                'popular_products' => $popular_products,
             ])->layout('layouts.base');
     }
 }

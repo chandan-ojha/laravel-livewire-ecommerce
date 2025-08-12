@@ -12,12 +12,17 @@ class CategoryComponent extends Component
     public $sorting;
     public $pagesize;
     public $category_slug;
+    public $min_price;
+    public $max_price;
 
     public function mount($category_slug)
     {
         $this->sorting       = 'default';
         $this->pagesize      = 12;
         $this->category_slug = $category_slug;
+
+        $this->min_price = 1;
+        $this->max_price = 1000;
     }
 
     public function store($product_id, $product_name, $product_price)
@@ -54,13 +59,15 @@ class CategoryComponent extends Component
                 ->paginate($this->pagesize);
         }
 
-        $categories = Category::all();
+        $categories       = Category::all();
+        $popular_products = Product::inRandomOrder()->limit(10)->get();
 
         return view('livewire.category-component',
             [
-                'products'      => $products,
-                'categories'    => $categories,
-                'category_name' => $category_name,
+                'products'         => $products,
+                'categories'       => $categories,
+                'popular_products' => $popular_products,
+                'category_name'    => $category_name,
             ])->layout('layouts.base');
     }
 }

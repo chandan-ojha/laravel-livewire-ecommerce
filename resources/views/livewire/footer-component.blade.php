@@ -9,7 +9,7 @@
                             <i class="fa fa-truck" aria-hidden="true"></i>
                             <div class="wrap-left-info">
                                 <h4 class="fc-name">Free Shipping</h4>
-                                <p class="fc-desc">Free On Oder Over $99</p>
+                                <p class="fc-desc">Free On Oder Over</p>
                             </div>
 
                         </li>
@@ -129,9 +129,14 @@
                                                 </li>
                                                 <li class="menu-item"><a href="#" class="link-term">Returns</a>
                                                 </li>
-                                                <li class="menu-item"><a href="#" class="link-term">Site Map</a>
+                                                <li class="menu-item"><a
+                                                        href="https://www.google.com/maps/place/GENUINE+STATIONARY+AND+GIFT+CORNER/@23.7719689,90.4073477,17z/data=!3m1!4b1!4m6!3m5!1s0x3755c700735c19e5:0x1b92b0174fb6aff9!8m2!3d23.7719689!4d90.4099226!16s%2Fg%2F11xth7rp6x?entry=ttu&g_ep=EgoyMDI1MDgwNC4wIKXMDSoASAFQAw%3D%3D"
+                                                        target="_blank" class="link-term">
+                                                        Site Map
+                                                    </a>
                                                 </li>
-                                                <li class="menu-item"><a href="#" class="link-term">Specials</a>
+                                                <li class="menu-item"><a href="#"
+                                                        class="link-term">Specials</a>
                                                 </li>
                                                 <li class="menu-item"><a href="#" class="link-term">Order
                                                         History</a>
@@ -152,7 +157,8 @@
                                 <h3 class="item-header">We Using Safe Payments:</h3>
                                 <div class="item-content">
                                     <div class="wrap-list-item wrap-gallery">
-                                        <img src="{{ asset('assets/images/payment.png') }}" style="max-width: 260px;">
+                                        <img src="{{ asset('assets/images/payment_3.jpg') }}"
+                                            style="max-width: 260px;">
                                     </div>
                                 </div>
                             </div>
@@ -221,89 +227,13 @@
                             <h3 class="backlink-title">Quick Links</h3>
                             <div class="back-link-row">
                                 <ul class="list-back-link">
-                                    <li><span class="row-title">Mobiles:</span></li>
-                                    <li><a href="#" class="redirect-back-link" title="mobile">Mobiles</a></li>
-                                    <li><a href="#" class="redirect-back-link" title="yphones">YPhones</a></li>
-                                    <li><a href="#" class="redirect-back-link" title="Gianee Mobiles GL">Gianee
-                                            Mobiles
-                                            GL</a></li>
-                                    <li><a href="#" class="redirect-back-link" title="Mobiles Karbonn">Mobiles
-                                            Karbonn</a></li>
-                                    <li><a href="#" class="redirect-back-link" title="Mobiles Viva">Mobiles
-                                            Viva</a>
-                                    </li>
-                                    <li><a href="#" class="redirect-back-link" title="Mobiles Intex">Mobiles
-                                            Intex</a>
-                                    </li>
-                                    <li><a href="#" class="redirect-back-link" title="Mobiles Micrumex">Mobiles
-                                            Micrumex</a></li>
-                                    <li><a href="#" class="redirect-back-link" title="Mobiles Bsus">Mobiles
-                                            Bsus</a>
-                                    </li>
-                                    <li><a href="#" class="redirect-back-link" title="Mobiles Samsyng">Mobiles
-                                            Samsyng</a></li>
-                                    <li><a href="#" class="redirect-back-link" title="Mobiles Lenova">Mobiles
-                                            Lenova</a>
-                                    </li>
+                                    <li><span class="row-title">Categories:</span></li>
+                                    @foreach ($categories as $category)
+                                        <li><a href="#" class="redirect-back-link"
+                                                title="mobile">{{ $category->name }}</a>
+                                        </li>
+                                    @endforeach
                                 </ul>
-
-                                <ul class="list-back-link">
-                                    <li><span class="row-title">Tablets:</span></li>
-                                    <li><a href="#" class="redirect-back-link" title="Plesc YPads">Plesc
-                                            YPads</a></li>
-                                    <li><a href="#" class="redirect-back-link" title="Samsyng Tablets">Samsyng
-                                            Tablets</a></li>
-                                    <li><a href="#" class="redirect-back-link" title="Qindows Tablets">Qindows
-                                            Tablets</a></li>
-                                    <li><a href="#" class="redirect-back-link" title="Calling Tablets">Calling
-                                            Tablets</a></li>
-                                    <li><a href="#" class="redirect-back-link"
-                                            title="Micrumex Tablets">Micrumex
-                                            Tablets</a></li>
-                                    <li><a href="#" class="redirect-back-link"
-                                            title="Lenova Tablets Bsus">Lenova
-                                            Tablets Bsus</a></li>
-                                    <li><a href="#" class="redirect-back-link" title="Tablets iBall">Tablets
-                                            iBall</a>
-                                    </li>
-                                    <li><a href="#" class="redirect-back-link" title="Tablets Swipe">Tablets
-                                            Swipe</a>
-                                    </li>
-                                    <li><a href="#" class="redirect-back-link"
-                                            title="Tablets TVs, Audio">Tablets TVs,
-                                            Audio</a></li>
-                                </ul>
-
-                                <ul class="list-back-link">
-                                    <li><span class="row-title">Fashion:</span></li>
-                                    <li><a href="#" class="redirect-back-link" title="Sarees Silk">Sarees
-                                            Silk</a></li>
-                                    <li><a href="#" class="redirect-back-link" title="sarees Salwar">sarees
-                                            Salwar</a>
-                                    </li>
-                                    <li><a href="#" class="redirect-back-link" title="Suits Lehengas">Suits
-                                            Lehengas</a>
-                                    </li>
-                                    <li><a href="#" class="redirect-back-link" title="Biba Jewellery">Biba
-                                            Jewellery</a>
-                                    </li>
-                                    <li><a href="#" class="redirect-back-link" title="Rings Earrings">Rings
-                                            Earrings</a>
-                                    </li>
-                                    <li><a href="#" class="redirect-back-link" title="Diamond Rings">Diamond
-                                            Rings</a>
-                                    </li>
-                                    <li><a href="#" class="redirect-back-link"
-                                            title="Loose Diamond Shoes">Loose Diamond
-                                            Shoes</a></li>
-                                    <li><a href="#" class="redirect-back-link"
-                                            title="BootsMen Watches">BootsMen
-                                            Watches</a></li>
-                                    <li><a href="#" class="redirect-back-link" title="Women Watches">Women
-                                            Watches</a>
-                                    </li>
-                                </ul>
-
                             </div>
                         </div>
                     </div>

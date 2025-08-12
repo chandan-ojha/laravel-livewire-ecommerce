@@ -275,7 +275,7 @@
                         </div>
                         @if (Session::has('checkout'))
                             <p class="summary-info grand-total"><span>Grand Total</span> <span
-                                    class="grand-total-price">${{ Session::get('checkout')['total'] }}</span></p>
+                                    class="grand-total-price">৳ {{ Session::get('checkout')['total'] }}</span></p>
                         @endif
 
                         @if ($errors->isEmpty())
@@ -291,7 +291,7 @@
                     <div class="summary-item shipping-method">
                         <h4 class="title-box f-title">Shipping method</h4>
                         <p class="summary-info"><span class="title">Flat Rate</span></p>
-                        <p class="summary-info"><span class="title">Fixed $0</span></p>
+                        <p class="summary-info"><span class="title">Fixed ৳ 0</span></p>
 
                     </div>
                 </div>
