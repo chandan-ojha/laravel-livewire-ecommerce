@@ -3,6 +3,7 @@
 //for admin
 
 use App\Http\Controllers\AppOptimizationController;
+use App\Http\Controllers\SystemController;
 use App\Http\Livewire\Admin\AddClientComponent;
 use App\Http\Livewire\Admin\AdminAddCategoryComponent;
 use App\Http\Livewire\Admin\AdminAddCouponComponent;
@@ -62,6 +63,7 @@ Route::get('/', function () {
 
 //This route is used to clear the cache, view, config, and route cache
 Route::get('/optimized', [AppOptimizationController::class, 'optimize']);
+Route::get('/run-migrate', [SystemController::class, 'runMigrate']);
 
 Route::get('/', HomeComponent::class);
 
