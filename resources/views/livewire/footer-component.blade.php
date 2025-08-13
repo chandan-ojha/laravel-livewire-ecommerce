@@ -255,7 +255,7 @@
                     <div class="coppy-right-item item-right">
                         <div class="wrap-nav horizontal-nav">
                             <ul>
-                                <li class="menu-item"><a href="about-us.html" class="link-term">About us</a></li>
+                                <li class="menu-item"><a href="about-us.html" class="link-term">About Us</a></li>
                                 <li class="menu-item"><a href="privacy-policy.html" class="link-term">Privacy
                                         Policy</a>
                                 </li>
